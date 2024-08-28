@@ -1,0 +1,8 @@
+## About the program | Easy Peasy Lemon Squeezy😀
+---
+This program give you the chance to see prime and composite numbers together with different styles. You can by two different customized range inputs pick the range of numbers that you want to view, and if you jsut want to see one of the types, you just need select its option, and the program will filter the numbers based on your choice.
+
+---
+
+## Simple hint
+If you intend to custom the range 

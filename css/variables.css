@@ -1,0 +1,21 @@
+:root {
+
+    /* colors */
+    --prime-number-bg: #4f4f4f;
+    --composite-number-bg: #918859;
+    --prime-number-color: #fff;
+    --composite-number-color: #fff6ef;
+    --common-border-radius: .5rem;
+    --circle-border-radius: 50%;
+    --bg-color: #d1d1d1;
+
+    /* fonts sizes */
+    --small-font-size: 1.3rem;
+    --medium-font-size: 1.7rem;
+    --big-font-size: 2.5rem;
+
+    /* font family */
+    --poppins-medium: 'Poppins-Medium';
+    --poppins-semiBold: 'Poppins-SemiBold';
+    --poppins-light: 'Poppins-Light';
+}

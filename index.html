@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css file/s -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="container">
+        <!-- Options -->
+        <div class="options">
+            <div class="option-wrapper">
+                <div class="option">
+                    <span class="flex-centering number-counter all-counter" id="all-numbers-counter">0</span>
+                    <input type="radio" class="flex-centering radio-input" name="option" id="all-numbers-option" data-option-name="all-options" checked>
+                    <label for="all-numbers-option">All</label>
+                </div>
+                <div class="option">
+                    <span class="flex-centering number-counter primes-counter" id="primes-numbers-counter">0</span>
+                    <input type="radio" class="flex-centering radio-input" name="option" id="primes-numbers-option" data-option-name="prime-options">
+                    <label for="primes-numbers-option">Primes</label>
+                </div>
+                <div class="option">
+                    <span class="flex-centering number-counter composite-counter" id="composite-numbers-counter">0</span>
+                    <input type="radio" class="flex-centering radio-input" name="option" id="composite-numbers-option" data-option-name="composite-options">
+                    <label for="composite-numbers-option">Composites</label>
+                </div>
+            </div>
+        </div>
+        <!-- ranges -->
+        <div class="flex-centering ranges">
+            <div class="flex-centering top-range" id="top-range">
+                <div class="line-range"></div>
+                <input type="range" class="range-field" id="min-range" min="2" value="0">
+                <input type="range" class="range-field" id="max-range" max="100" value="100">
+                <div class="thumb thumb-min "><span class="flex-centering range-value" id="min-range-value">0</span></div>
+                <div class="thumb thumb-max"><span class="flex-centering range-value" id="max-range-value">100</span></div>
+            </div>
+            <div class="bottom-range" id="bottom-raneg">
+                <input type="number" class="number-range-field" id="min-number-range-field">
+                <input type="number" class="number-range-field" id="max-number-range-field">
+            </div>
+        </div>
+        <!-- numbers -->
+        <div class="numbers">
+            <div class="flex-centering moveable-box">
+                <div class="basePowerWrapper"></div>
+            </div>
+            <div class="numbers-wrapper" id="numbers-container"></div>
+        </div>    
+    </div>
+
+
+<!-- js file/s -->
+ <script src="js/app.js"></script>
+</body>
+</html>

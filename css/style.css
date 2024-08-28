@@ -1,0 +1,373 @@
+@import './variables.css';
+@import './font.css';
+
+/* initial settings */
+
+html {
+    font-size: 10px;
+    box-sizing: border-box;
+}
+
+*,*::after,*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 1.6rem;
+    padding: 0 3rem;
+    background-color: #d1d1d1;
+}
+
+/* Helper classes */
+
+.flex-centering {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container */
+
+.container {
+    width: min(100rem, 100%);
+    height: 90rem;
+    /* background-color: red; */
+    margin: 3rem auto;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    grid-template-rows: 16% 16% 68%;
+}
+
+/* Options */
+
+.options {
+    display: flex;
+    align-items: center;
+    padding-left: .7rem;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    gap: 1.5rem;
+}
+
+.option > label {
+    font-size: 1.8rem;
+    cursor: pointer;
+    font-family: var(--poppins-medium);
+    user-select: none;
+}
+
+.number-counter {
+    width: 5.3rem;
+    height: 2.5rem;
+    display: flex;
+    border-radius: var(--common-border-radius);
+    color: var(--prime-number-color);
+    font-size: var(--small-font-size);
+    font-family: var(--poppins-light);
+    user-select: none;
+}
+
+.all-counter {
+    background-image: linear-gradient(to right, var(--prime-number-bg) 50%, var(--composite-number-bg) 50%);
+}
+
+.primes-counter {
+    background-color: var(--prime-number-bg);
+}
+
+.composite-counter {
+    background-color: var(--composite-number-bg);
+}
+
+.radio-input {
+    position: relative;
+    visibility: hidden;
+}
+
+.radio-input::after {
+    content: '';
+    position: absolute;
+    width: 2.3rem;
+    height: 2.3rem;
+    border: .1rem solid var(--prime-number-bg);
+    border-radius: var(--common-border-radius);
+    visibility: visible;
+    transition: .2s all;
+}
+
+.radio-input:checked::after {
+    border-radius: var(--circle-border-radius);
+}
+
+#all-numbers-option:checked::after {
+    background: linear-gradient(to right, var(--prime-number-bg) 50%, var(--composite-number-bg) 50%);
+}
+#primes-numbers-option:checked::after {
+    background-color: var(--prime-number-bg);
+}
+
+#composite-numbers-option:checked::after {
+    background-color: var(--composite-number-bg);
+}
+
+/* Ranges */
+
+.ranges {
+    flex-direction: column;
+    gap: 3rem;
+    padding: 0 2rem;
+}
+
+.top-range {
+    width: 100%;
+    height: .3rem;
+    background-color: #fff;
+    position: relative;
+}
+
+.line-range {
+    position: absolute;
+    height: 100%;
+    background-color: var(--prime-number-bg);
+    left: 0;
+    right: 0;
+}
+
+.range-field {
+    position: absolute;
+    width: 100%;
+    appearance: none;
+    background-color: transparent;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.range-field::-webkit-slider-thumb {
+    appearance: none;
+    width: 3rem;
+    height: 3rem;
+    background-color: transparent;
+    border-radius: var(--circle-border-radius);
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.thumb {
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    background: #bdbdbd;
+    box-shadow: inset 4px 4px 8px #555555, inset -4px -4px 8px #d7d7d7;
+    border-radius: var(--circle-border-radius);
+    transition: .2s background-color;
+}
+
+.top-range.change .thumb{
+    background-color: transparent;
+    border: .2rem solid #555555;
+}
+
+.thumb-min {
+    left: 0;
+}
+
+.thumb-max {
+    right: 0;
+}
+
+.range-value {
+    position: absolute;
+    width: 5.4rem;
+    height: 3rem;
+    background-color: var(--prime-number-bg);
+    font-family: var(--poppins-light);
+    font-size: var(--medium-font-size);
+    border-radius: var(--common-border-radius);
+    color: #fff;
+    bottom: 130%;
+    transition: .2s all;
+}
+
+.top-range.change .range-value {
+    width: 4rem;
+    height: 2rem;
+    font-size: var(--small-font-size);
+    background-color: transparent;
+    border: .1rem solid var(--prime-number-bg);
+    color: var(--prime-number-bg);
+    font-family: var(--poppins-semiBold);
+}
+
+.top-range.change .thumb-min .range-value {
+    bottom: 210%;
+}
+
+
+.bottom-range {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.number-range-field {
+    width: 6rem;
+    height: 3rem;
+    text-align: center;
+    border: none;
+    outline: none;
+    border-radius: var(--common-border-radius);
+    background-color: var(--prime-number-bg);
+    font-family: var(--poppins-light);
+    font-size: var(--small-font-size);
+    color: #fff;
+}
+
+.number-range-field::-webkit-outer-spin-button,
+.number-range-field::-webkit-inner-spin-button {
+    appearance: none;
+}
+
+/* Numbers */
+
+.numbers {
+    grid-column: 1/3;
+    grid-row: 2/4;
+    position: relative;
+}
+
+.moveable-box {
+    position: absolute;
+    min-width: 15rem ;
+    height: 4rem;
+    background-color: #f2f2f2;
+    transform: translateY(-130%);
+    pointer-events: none;
+    border-radius: var(--common-border-radius);
+    font-size: var(--medium-font-size);
+    font-family: var(--poppins-medium);
+    color: var(--prime-number-bg);
+    box-shadow: 0 0 .2rem rgba(0,0,0,.3) inset;
+    opacity: 0;
+    visibility: hidden;
+    transition: .2s all;
+}
+
+.moveable-box.change {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.moveable-box::after {
+    content: '';
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    background-color: inherit;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(50%) rotate(45deg);
+}
+
+.numbers-wrapper {
+    height: 100%;
+    width: 100%;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
+    grid-auto-rows: 6rem;
+    gap: 1rem;
+    overflow-y: auto;
+}
+
+.numbers-wrapper::-webkit-scrollbar {
+    width: auto;
+    width: 1rem;
+    border: .1rem solid #918859;
+    border-radius: 10rem;
+}
+
+.numbers-wrapper::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.numbers-wrapper::-webkit-scrollbar-thumb {
+    background-color: #404040;
+    border-radius: 10rem;
+    border-right: .2rem solid #918859;
+    border-left: .2rem solid #918859;
+}
+
+
+.number {
+    user-select: none;
+    background-color: saddlebrown;
+    font-size: var(--big-font-size);
+    font-family: var(--poppins-medium);
+    border-radius: var(--common-border-radius);
+    color: #fff;
+}
+
+.prime {
+    background-color: var(--prime-number-bg);
+}
+
+.composite {
+    background-color: var(--composite-number-bg);
+    color: var(--composite-number-color);
+}   
+
+@media (max-width: 750px) {
+    .options {
+        grid-column: 1/3;
+        grid-row: 2/3;
+    }
+
+    .option-wrapper {
+        width: 100%;
+    }
+
+    .option > label {
+        width: 100%;
+    }
+    
+    .ranges {
+        grid-column: 1/3;
+        grid-row: 1/2;
+    }
+
+    .range-value {
+        font-size: var(--small-font-size);
+        width: 4rem;
+        height: 2rem;
+    }
+
+    .option > label {
+        font-size: 1.4rem;
+    }
+
+    .numbers {
+        grid-column: 1/3;
+        grid-row: 3/4;
+    }
+
+    .numbers-wrapper {
+        grid-template-columns: repeat(auto-fill, minmax(4rem, 1fr));
+        grid-auto-rows: 4rem;
+    }
+
+    .number {
+        font-size: var(--medium-font-size);
+    }
+
+    .moveable-box {
+        min-width: 6rem;
+        font-size: var(--small-font-size);
+    }
+}
